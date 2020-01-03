@@ -2,13 +2,18 @@ import os
 import json
 
 source_dir = '/home/user/grafana/tamplates/grafana'
-dist_dir = '/home/user/grafana/name'
-
+dist_dir = '/home/user/grafana/name/list.txt'
+newFile = open(dist_dir, "w")
+i = 1
 
 for dir_name in os.listdir(source_dir):
     with open(source_dir + "/" + dir_name) as f:
         templates = json.load(f)
     a = str(templates['meta']['folderUrl']).split("/")
     need_value = a[len(a)-1]
-    print(need_value)
+    newFile.write(str(i) + " - " + source_dir + "/" + dir_name + "\n")
+    newFile.write(need_value + "\n")
+    i = i + 1
     
+
+newFile.close()
