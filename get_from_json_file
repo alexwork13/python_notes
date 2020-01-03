@@ -1,0 +1,14 @@
+import os
+import json
+
+source_dir = '/home/user/grafana/tamplates/grafana'
+dist_dir = '/home/user/grafana/name'
+
+
+for dir_name in os.listdir(source_dir):
+    with open(source_dir + "/" + dir_name) as f:
+        templates = json.load(f)
+    a = str(templates['meta']['folderUrl']).split("/")
+    need_value = a[len(a)-1]
+    print(need_value)
+    
